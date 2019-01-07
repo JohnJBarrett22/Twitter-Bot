@@ -48,6 +48,20 @@ function followed(eventMsg) {
     tweetPost('@' + screenName + ' how long have you liked following robots around?');
 }
 
+stream.on('tweet', tweetEvent);
+
+function tweetEvent(eventMsg) {
+    var replyto = eventMsg.in_reply_to_screen_name;
+    var text = eventMsg.text;
+    var from = eventMsg.user.screen_name;
+
+    console.log(replyto + '' + from);
+
+    if(replyto === 'IiiiOoo51672751'){
+        var newtweet = '@' + from + ' thanks for tweeting me!';
+        tweetPost(newtweet);
+    }
+}
 
 // setInterval(tweetPost, 1000*20)
 
